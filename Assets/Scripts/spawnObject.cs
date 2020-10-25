@@ -8,11 +8,15 @@ public class spawnObject : MonoBehaviour
     void Start()
     {
         FixedJoint2D fixedJoint2D = GetComponent<FixedJoint2D>();
+
+        print(transform.localPosition);
+        Vector2 newPos = new Vector2(Mathf.Round(transform.localPosition.x), 0.7F);
+        print(newPos);
+        fixedJoint2D.connectedAnchor = newPos;
+
         fixedJoint2D.enabled = true;
 
-        Vector2 newPos = new Vector2(Mathf.Round(fixedJoint2D.connectedAnchor.x), 0.7F);
-        fixedJoint2D.connectedAnchor = newPos;
-        print(fixedJoint2D.connectedAnchor);
+
     }
 
     // Update is called once per frame
