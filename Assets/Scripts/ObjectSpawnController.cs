@@ -9,12 +9,7 @@ public class ObjectSpawnController : MonoBehaviour
     public GameObject spawn;
     public GameObject originalSprite;
 
-    // Start is called before the first frame update
-    void Start() {
-
-    }
-
-    // Update is called once per frame
+    //detecta touch, si la posicion del touch coincide con algun polygon collider quitar collider y sustituir por objeto
     void Update() {
         if (Input.touchCount == 1) {
             Vector3 wp = Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position);
