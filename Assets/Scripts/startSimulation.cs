@@ -2,10 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using TMPro;
 
 public class startSimulation : MonoBehaviour, IPointerDownHandler{
     bool simulatorFlag = false;
     public GameObject Platform;
+    public GameObject[] gameObjectList;
+    public List<GameObject> spawnedObjects;
+    public TextMeshProUGUI simulatorText;
 
     /*
     click listener, cuando el boton el presionado mueve los limites de angulos del hinge joint son cambiados a -360 y 360 permitiendo rotacion de ambos lados
@@ -17,8 +21,36 @@ public class startSimulation : MonoBehaviour, IPointerDownHandler{
         Cuando el simulador pasa de estado inactivo -> activo
             remover los spawner sprites no utilizados
     */
+
+    void Start () {
+        simulatorText = FindObjectOfType<TextMeshProUGUI> ();
+    }
+
     public void OnPointerDown(PointerEventData eventData){
-     var hinge = Platform.GetComponent<HingeJoint2D>();
-     hinge.limits = new JointAngleLimits2D() { max = 360, min = -360 };
+        if(!simulatorFlag){
+            var hinge = Platform.GetComponent<HingeJoint2D>();
+            hinge.limits = new JointAngleLimits2D() { max = 360, min = -360 };
+            for(int i = 0; i < 10; i++){
+                gameObjectList[i].SetActive(false);
+            }
+            simulatorText.SetText("Detener Simulador");
+            simulatorFlag = true;
+        }
+        else{
+            var hinge = Platform.GetComponent<HingeJoint2D>();
+            hinge.limits = new JointAngleLimits2D() { max = 0, min = 0 };
+            for(int i = 0; i < 10; i++){
+                gameObjectList[i].SetActive(true);
+            }
+            foreach (var obj in spawnedObjects) {
+                Destroy(obj);
+            }      
+            simulatorText.SetText("Iniciar Simulador");
+            simulatorFlag = false;
+        }
+    }
+
+    public void objectCreated(GameObject spawned){
+        spawnedObjects.Add(spawned);
     }
 }

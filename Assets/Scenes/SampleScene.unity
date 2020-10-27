@@ -600,6 +600,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawn: {fileID: 1327861596}
   originalSprite: {fileID: 364860648}
+  spawnSprite: {fileID: 0}
 --- !u!212 &364860651
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1129,6 +1130,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawn: {fileID: 1327861596}
   originalSprite: {fileID: 529088027}
+  spawnSprite: {fileID: 0}
 --- !u!60 &529088031
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -1639,6 +1641,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawn: {fileID: 1327861596}
   originalSprite: {fileID: 624021352}
+  spawnSprite: {fileID: 0}
 --- !u!212 &624021355
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2172,6 +2175,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawn: {fileID: 1327861596}
   originalSprite: {fileID: 816675194}
+  spawnSprite: {fileID: 0}
 --- !u!212 &816675197
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2516,6 +2520,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawn: {fileID: 1327861596}
   originalSprite: {fileID: 1182238680}
+  spawnSprite: {fileID: 0}
 --- !u!212 &1182238683
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2644,6 +2649,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawn: {fileID: 1327861596}
   originalSprite: {fileID: 1302424675}
+  spawnSprite: {fileID: 0}
 --- !u!212 &1302424678
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2925,6 +2931,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawn: {fileID: 1327861596}
   originalSprite: {fileID: 1384523129}
+  spawnSprite: {fileID: 0}
 --- !u!212 &1384523132
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3053,6 +3060,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawn: {fileID: 1327861596}
   originalSprite: {fileID: 1476361799}
+  spawnSprite: {fileID: 0}
 --- !u!212 &1476361802
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3653,6 +3661,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawn: {fileID: 1327861596}
   originalSprite: {fileID: 1811233960}
+  spawnSprite: {fileID: 0}
 --- !u!212 &1811233963
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4420,6 +4429,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawn: {fileID: 1327861596}
   originalSprite: {fileID: 1951438382}
+  spawnSprite: {fileID: 1951438385}
 --- !u!212 &1951438385
 SpriteRenderer:
   m_ObjectHideFlags: 0
