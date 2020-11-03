@@ -29,6 +29,7 @@ public class ObjectSpawnController : MonoBehaviour
                 newObj.transform.parent = GameObject.Find("Platform").transform;
 
                 simulator.objectCreated(newObj);
+           
             }
         }
     }
