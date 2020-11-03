@@ -21,7 +21,7 @@ public class startSimulation : MonoBehaviour, IPointerDownHandler{
         Cuando el simulador pasa de estado inactivo -> activo
             remover los spawner sprites no utilizados
     */
-
+    
     void Start () {
         simulatorText = FindObjectOfType<TextMeshProUGUI> ();
     }
@@ -32,9 +32,11 @@ public class startSimulation : MonoBehaviour, IPointerDownHandler{
             hinge.limits = new JointAngleLimits2D() { max = 360, min = -360 };
             for(int i = 0; i < 10; i++){
                 gameObjectList[i].SetActive(false);
+
             }
             simulatorText.SetText("Detener Simulador");
             simulatorFlag = true;
+            
         }
         else{
             var hinge = Platform.GetComponent<HingeJoint2D>();
