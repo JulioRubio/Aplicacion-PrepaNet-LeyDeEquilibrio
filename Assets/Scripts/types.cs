@@ -15,16 +15,9 @@ public class types : MonoBehaviour
         Rigidbody2D rigidbody2D = GetComponent<Rigidbody2D>();
 
         newMass.mass = rigidbody2D.mass;
+        transform.position = new Vector3(0.0f, -2.0f, 0.0f);
+        newMass.AddForce(transform.up * 1.0f);
     }
-    void Start()
-    {
-      
-
-    }
-
-
- 
-  
 
     // Update is called once per frame
     void Update()
