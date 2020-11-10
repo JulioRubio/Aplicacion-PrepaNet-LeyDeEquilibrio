@@ -12,7 +12,8 @@ public class ObjectSpawnController : MonoBehaviour
 
     void Start(){
         simulator = GameObject.FindObjectOfType<startSimulation>();
-    }
+
+}
 
     //detecta touch, si la posicion del touch coincide con algun polygon collider quitar collider y sustituir por objeto
     void Update() {
@@ -27,11 +28,11 @@ public class ObjectSpawnController : MonoBehaviour
                 print(newObj.transform.position);
                 newObj.AddComponent<spawnObject>();
                 newObj.transform.parent = GameObject.Find("Platform").transform;
-
                 simulator.objectCreated(newObj);
            
             }
         }
+
     }
 
 }
