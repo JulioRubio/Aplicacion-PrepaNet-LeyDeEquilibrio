@@ -13,12 +13,12 @@ public class ButtonBehaviour : MonoBehaviour
         Levels levels;
         string pathLevels = Application.streamingAssetsPath + "/levels.json";
         string contents = File.ReadAllText(pathLevels);
-        levels = JsonUtility.FromJson<Levels>(contents);
+        levels = JsonUtility.FromJson<Levels>( "{\"levels\":" + contents + "}");
 
         LevelContents levelContents;
         string pathLevelContents = Application.streamingAssetsPath + "/level_contents.json";
         contents = File.ReadAllText(pathLevelContents);
-        levelContents = JsonUtility.FromJson<LevelContents>(contents);
+        levelContents = JsonUtility.FromJson<LevelContents>( "{\"level_contents\":" + contents + "}");
 
         string buttonName = EventSystem.current.currentSelectedGameObject.name; 
         int levelNumber =  Int32.Parse(buttonName[buttonName.Length - 1].ToString());
