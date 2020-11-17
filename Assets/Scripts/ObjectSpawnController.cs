@@ -24,9 +24,9 @@ public class ObjectSpawnController : MonoBehaviour
                 originalSprite.SetActive(false);
                 Vector3 rotationVector = new Vector3(0f,0f,originalSprite.transform.parent.rotation.z);
                 Vector2 newPos = new Vector2(originalSprite.transform.position.x,originalSprite.transform.position.y-0.7f);
-                var newObj = GameObject.Instantiate(spawn, newPos, Quaternion.Euler(0, 0, rotationVector.z));
-                print(newObj.transform.position);
+                var newObj = GameObject.Instantiate(spawn, newPos, Quaternion.Euler(0, 0, rotationVector.z)) ;
                 newObj.AddComponent<spawnObject>();
+                newObj.GetComponent<setNewAngle>().objectController = this.gameObject;
                 newObj.transform.parent = GameObject.Find("Platform").transform;
                 simulator.objectCreated(newObj);
            
