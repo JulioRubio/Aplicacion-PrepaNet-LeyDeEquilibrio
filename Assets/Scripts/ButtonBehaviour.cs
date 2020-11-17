@@ -21,8 +21,8 @@ public class ButtonBehaviour : MonoBehaviour
         levelContents = JsonUtility.FromJson<LevelContents>(contents);
 
         string buttonName = EventSystem.current.currentSelectedGameObject.name; 
-        int levelNumber =  Int32.Parse(buttonName[buttonName.Length - 1]);
-        string difficulty = buttonName.Substring(0, buttonName.Length);
+        int levelNumber =  Int32.Parse(buttonName[buttonName.Length - 1].ToString());
+        string difficulty = buttonName.Substring(0, buttonName.Length - 1);
 
         string result = "";
         foreach (Level level in levels.levels)
