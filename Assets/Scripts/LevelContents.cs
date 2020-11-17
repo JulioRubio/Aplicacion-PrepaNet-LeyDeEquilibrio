@@ -1,5 +1,5 @@
 ﻿[System.Serializable]
 public class LevelContents
 {
-    public LevelContent[] levelcontents;
+    public LevelContent[] level_contents;
 }
