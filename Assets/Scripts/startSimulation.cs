@@ -33,6 +33,8 @@ public class startSimulation : MonoBehaviour, IPointerDownHandler{
         string pathLevelContents = Application.streamingAssetsPath + "/level_contents.json";
         contents = File.ReadAllText(pathLevelContents);
         levelContents = JsonUtility.FromJson<LevelContents>( "{\"level_contents\":" + contents + "}");
+        Debug.Log(PlayerPrefs.GetString("ids"));
+
     }
 
     public void OnPointerDown(PointerEventData eventData){
