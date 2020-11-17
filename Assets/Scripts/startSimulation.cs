@@ -24,7 +24,15 @@ public class startSimulation : MonoBehaviour, IPointerDownHandler{
     
     void Start () {
         simulatorText = FindObjectOfType<TextMeshProUGUI> ();
-        Debug.Log(PlayerPrefs.GetString("ids"))
+        Levels levels;
+        string pathLevels = Application.streamingAssetsPath + "/levels.json";
+        string contents = File.ReadAllText(pathLevels);
+        levels = JsonUtility.FromJson<Levels>( "{\"levels\":" + contents + "}");
+
+        LevelContents levelContents;
+        string pathLevelContents = Application.streamingAssetsPath + "/level_contents.json";
+        contents = File.ReadAllText(pathLevelContents);
+        levelContents = JsonUtility.FromJson<LevelContents>( "{\"level_contents\":" + contents + "}");
     }
 
     public void OnPointerDown(PointerEventData eventData){

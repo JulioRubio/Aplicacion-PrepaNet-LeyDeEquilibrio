@@ -24,6 +24,8 @@ public class ButtonBehaviour : MonoBehaviour
         int levelNumber =  Int32.Parse(buttonName[buttonName.Length - 1].ToString());
         string difficulty = buttonName.Substring(0, buttonName.Length - 1);
 
+        PlayerPrefs.SetString("difficulty", difficulty);
+        PlayerPrefs.SetString("levelNumber", levelNumber);
         string result = "";
         foreach (Level level in levels.levels)
         {
