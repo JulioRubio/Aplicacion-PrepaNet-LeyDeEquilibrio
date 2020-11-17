@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.IO;
-using System
+using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
@@ -36,12 +36,12 @@ public class ButtonBehaviour : MonoBehaviour
                          PlayerPrefs.SetString(LC.id + "content", LC.content);
                          PlayerPrefs.SetInt(LC.id + "hidden_mass_flag", LC.hidden_mass_flag);
                          PlayerPrefs.SetInt(LC.id + "position", LC.position);
-                         result = result + LC.id + ","
+                         result = result + LC.id + ",";
                      }
                  }    
             }
         }
-        PlayerPrefs.SetString("ids", result)
+        PlayerPrefs.SetString("ids", result);
         SceneManager.LoadScene("SampleScene", LoadSceneMode.Additive);
    }
 }

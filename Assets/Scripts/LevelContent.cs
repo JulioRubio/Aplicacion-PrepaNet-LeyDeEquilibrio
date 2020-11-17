@@ -2,7 +2,7 @@
 public class LevelContent
 {
     public int canvas_flag;
-    public String content;
+    public string content;
     public int hidden_mass_flag;
     public int id;
     public int level_id;

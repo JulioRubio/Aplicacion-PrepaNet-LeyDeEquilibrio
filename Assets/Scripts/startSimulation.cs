@@ -24,7 +24,8 @@ public class startSimulation : MonoBehaviour, IPointerDownHandler{
     
     void Start () {
         simulatorText = FindObjectOfType<TextMeshProUGUI> ();
-        Debug.Log(PlayerPrefs.GetString("ids"))
+        Debug.Log(PlayerPrefs.GetString("ids"));
+
     }
 
     public void OnPointerDown(PointerEventData eventData){
