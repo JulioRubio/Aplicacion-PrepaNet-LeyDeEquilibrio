@@ -33,7 +33,24 @@ public class startSimulation : MonoBehaviour, IPointerDownHandler{
         string pathLevelContents = Application.streamingAssetsPath + "/level_contents.json";
         contents = File.ReadAllText(pathLevelContents);
         levelContents = JsonUtility.FromJson<LevelContents>( "{\"level_contents\":" + contents + "}");
-        Debug.Log(PlayerPrefs.GetString("ids"));
+        difficulty = PlayerPrefs.GetString("difficulty");
+        levelNumber = PlayerPrefs.GetString("levelNumber");
+
+        foreach (Level level in levels.levels)
+        {
+            if(level.difficulty.Equals(difficulty) && level.level == levelNumber)
+            {
+                 foreach (LevelContent LC in levelContents.level_contents)
+                 {
+                     if(level.id == LC.level_id){
+                        Debug.Log(LC.canvas_flag);
+                        Debug.Log(LC.content);
+                        Debug.Log(LC.hidden_mass_flag);
+                        Debug.Log(LC.position);
+                     }
+                 }    
+            }
+        }
 
     }
 
