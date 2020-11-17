@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 using TMPro;
 
 public class startSimulation : MonoBehaviour, IPointerDownHandler{
-    bool simulatorFlag = false;
+    public bool simulatorFlag = false;
     public GameObject Platform;
     public GameObject[] gameObjectList;
     public List<GameObject> spawnedObjects;
@@ -30,7 +30,8 @@ public class startSimulation : MonoBehaviour, IPointerDownHandler{
         if(!simulatorFlag){
             var hinge = Platform.GetComponent<HingeJoint2D>();
             hinge.limits = new JointAngleLimits2D() { max = 360, min = -360 };
-            for(int i = 0; i < 10; i++){
+            var size = gameObjectList.Length;
+            for(int i = 0; i < size; i++){
                 gameObjectList[i].SetActive(false);
 
             }
@@ -41,7 +42,9 @@ public class startSimulation : MonoBehaviour, IPointerDownHandler{
         else{
             var hinge = Platform.GetComponent<HingeJoint2D>();
             hinge.limits = new JointAngleLimits2D() { max = 0, min = 0 };
-            for(int i = 0; i < 10; i++){
+            var size = gameObjectList.Length;
+            for (int i = 0; i < size; i++)
+            {
                 gameObjectList[i].SetActive(true);
             }
             foreach (var obj in spawnedObjects) {
@@ -55,4 +58,7 @@ public class startSimulation : MonoBehaviour, IPointerDownHandler{
     public void objectCreated(GameObject spawned){
         spawnedObjects.Add(spawned);
     }
+
+
 }
+
