@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using TMPro;
+using System.IO;
+using System;
 
 public class startSimulation : MonoBehaviour, IPointerDownHandler{
     bool simulatorFlag = false;
@@ -33,8 +35,8 @@ public class startSimulation : MonoBehaviour, IPointerDownHandler{
         string pathLevelContents = Application.streamingAssetsPath + "/level_contents.json";
         contents = File.ReadAllText(pathLevelContents);
         levelContents = JsonUtility.FromJson<LevelContents>( "{\"level_contents\":" + contents + "}");
-        difficulty = PlayerPrefs.GetString("difficulty");
-        levelNumber = PlayerPrefs.GetString("levelNumber");
+        string difficulty = PlayerPrefs.GetString("difficulty");
+        int levelNumber = PlayerPrefs.GetInt("levelNumber");
 
         foreach (Level level in levels.levels)
         {

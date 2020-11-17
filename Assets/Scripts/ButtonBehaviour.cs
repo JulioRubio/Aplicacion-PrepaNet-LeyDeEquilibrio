@@ -15,7 +15,7 @@ public class ButtonBehaviour : MonoBehaviour
         string difficulty = buttonName.Substring(0, buttonName.Length - 1);
 
         PlayerPrefs.SetString("difficulty", difficulty);
-        PlayerPrefs.SetString("levelNumber", levelNumber);
+        PlayerPrefs.SetInt("levelNumber", levelNumber);
         SceneManager.LoadScene("SampleScene", LoadSceneMode.Additive);
    }
 }
