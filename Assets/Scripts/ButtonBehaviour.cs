@@ -1,5 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.IO;
+using System
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
@@ -20,7 +22,7 @@ public class ButtonBehaviour : MonoBehaviour
 
         string buttonName = EventSystem.current.currentSelectedGameObject.name; 
         int levelNumber =  Int32.Parse(buttonName[buttonName.Length - 1]);
-        string difficulty = buttonName.Slice(0, buttonName.Length);
+        string difficulty = buttonName.Substring(0, buttonName.Length);
 
         string result = "";
         foreach (Level level in levels.levels)
@@ -39,7 +41,7 @@ public class ButtonBehaviour : MonoBehaviour
                  }    
             }
         }
-        PlayerPrefs.setString("ids", result)
+        PlayerPrefs.SetString("ids", result)
         SceneManager.LoadScene("SampleScene", LoadSceneMode.Additive);
    }
 }
