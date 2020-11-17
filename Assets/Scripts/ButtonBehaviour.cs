@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 
 public class ButtonBehaviour : MonoBehaviour
 {
@@ -29,10 +30,10 @@ public class ButtonBehaviour : MonoBehaviour
                  foreach (LevelContent LC in levelContents.level_contents)
                  {
                      if(level.id == LC.level_id){
-                         PlayerPrefs.setInt(LC.id + "canvas_flag", LC.canvas_flag);
-                         PlayerPrefs.setString(LC.id + "content", LC.content);
-                         PlayerPrefs.setInt(LC.id + "hidden_mass_flag", LC.hidden_mass_flag);
-                         PlayerPrefs.setInt(LC.id + "position", LC.position);
+                         PlayerPrefs.SetInt(LC.id + "canvas_flag", LC.canvas_flag);
+                         PlayerPrefs.SetString(LC.id + "content", LC.content);
+                         PlayerPrefs.SetInt(LC.id + "hidden_mass_flag", LC.hidden_mass_flag);
+                         PlayerPrefs.SetInt(LC.id + "position", LC.position);
                          result = result + LC.id + ","
                      }
                  }    
