@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using TMPro;
+using System.IO;
+using System;
+using System.Linq;
 
 public class startSimulation : MonoBehaviour, IPointerDownHandler{
     public bool simulatorFlag = false;
@@ -24,6 +27,55 @@ public class startSimulation : MonoBehaviour, IPointerDownHandler{
     
     void Start () {
         simulatorText = FindObjectOfType<TextMeshProUGUI> ();
+        Levels levels;
+        string pathLevels = Application.streamingAssetsPath + "/levels.json";
+        string contents = File.ReadAllText(pathLevels);
+        levels = JsonUtility.FromJson<Levels>( "{\"levels\":" + contents + "}");
+
+        LevelContents levelContents;
+        string pathLevelContents = Application.streamingAssetsPath + "/level_contents.json";
+        contents = File.ReadAllText(pathLevelContents);
+        levelContents = JsonUtility.FromJson<LevelContents>( "{\"level_contents\":" + contents + "}");
+        string difficulty = PlayerPrefs.GetString("difficulty");
+        int levelNumber = PlayerPrefs.GetInt("levelNumber");
+        string[] gameOs = new string[8];
+        string[] objects = {"TX Village Props Barrel", "TX Village Props Barrel (1)", "TX Village Props Barrel (2)", "TX Village Props Barrel (3)",
+                            "TX Village Props Barrel (4)", "TX Village Props Barrel (5)", "TX Village Props Barrel (6)"};
+        int i = 0;
+        Debug.Log(difficulty);
+        Debug.Log(levelNumber);
+        foreach (Level level in levels.levels)
+        {
+            if(level.difficulty.Equals(difficulty) && level.level == levelNumber)
+            {
+                 foreach (LevelContent LC in levelContents.level_contents)
+                 {
+                     if(level.id == LC.level_id){
+                        if(LC.canvas_flag == 1)
+                        {
+                            gameOs[i] = LC.content;
+                            i++;
+                        }
+                        Debug.Log(LC.canvas_flag);
+                        Debug.Log(LC.content);
+                        Debug.Log(LC.hidden_mass_flag);
+                        Debug.Log(LC.position);
+                     }
+                 }    
+            }
+        }
+        foreach (string o in objects)
+        {
+            if (gameOs.Contains(o))
+            {
+                Debug.Log("Hello");
+                Debug.Log(o);
+            }
+            else
+            {
+                GameObject.Find(o).SetActive(false);
+            }
+        }
     }
 
     public void OnPointerDown(PointerEventData eventData){
