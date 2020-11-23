@@ -1338,7 +1338,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -25, y: 16.604}
+  m_AnchoredPosition: {x: -25, y: 16.604004}
   m_SizeDelta: {x: 163, y: 48}
   m_Pivot: {x: 1, y: 2}
 --- !u!114 &419431966
@@ -1361,11 +1361,6 @@ MonoBehaviour:
   - {fileID: 816675194}
   - {fileID: 1384523129}
   - {fileID: 1951438382}
-  - {fileID: 624021352}
-  - {fileID: 1182238680}
-  - {fileID: 1476361799}
-  - {fileID: 1811233960}
-  - {fileID: 1302424675}
   spawnedObjects: []
   simulatorText: {fileID: 0}
 --- !u!61 &419431967
