@@ -58,8 +58,8 @@ public class startSimulation : MonoBehaviour, IPointerDownHandler{
                         }
                         else{
                             // Objetos que deben estar sobre la regla al principio
-                            LC.position
-                            LC.content
+                            //LC.position
+                            //LC.content
                         }
                         Debug.Log(LC.canvas_flag);
                         Debug.Log(LC.content);
@@ -104,9 +104,10 @@ public class startSimulation : MonoBehaviour, IPointerDownHandler{
             {
                 gameObjectList[i].SetActive(true);
             }
-            foreach (var obj in spawnedObjects) {
+            foreach (var obj in spawnedObjects)
+            {
                 Destroy(obj);
-            }      
+            }
             simulatorText.SetText("Iniciar Simulador");
             simulatorFlag = false;
         }
