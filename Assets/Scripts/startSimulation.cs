@@ -56,6 +56,11 @@ public class startSimulation : MonoBehaviour, IPointerDownHandler{
                             gameOs[i] = LC.content;
                             i++;
                         }
+                        else{
+                            // Objetos que deben estar sobre la regla al principio
+                            LC.position
+                            LC.content
+                        }
                         Debug.Log(LC.canvas_flag);
                         Debug.Log(LC.content);
                         Debug.Log(LC.hidden_mass_flag);
