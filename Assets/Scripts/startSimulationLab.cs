@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using TMPro;
 
-public class startSimulationClean : MonoBehaviour, IPointerDownHandler{
+public class startSimulationLab : MonoBehaviour, IPointerDownHandler{
     public bool simulatorFlag = false;
     public GameObject Platform;
     public GameObject[] gameObjectList;
