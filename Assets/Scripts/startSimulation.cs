@@ -58,8 +58,15 @@ public class startSimulation : MonoBehaviour, IPointerDownHandler{
                         }
                         else{
                             // Objetos que deben estar sobre la regla al principio
-                            LC.position
-                            LC.content
+                            //LC.position
+                            //LC.content
+
+                            var size = gameObjectList.Length;
+                            for (int j = 5; j < size; j++)
+                            {
+                                gameObjectList[j].SetActive(false);
+
+                            }
                         }
                         Debug.Log(LC.canvas_flag);
                         Debug.Log(LC.content);
@@ -88,7 +95,7 @@ public class startSimulation : MonoBehaviour, IPointerDownHandler{
             var hinge = Platform.GetComponent<HingeJoint2D>();
             hinge.limits = new JointAngleLimits2D() { max = 360, min = -360 };
             var size = gameObjectList.Length;
-            for(int i = 0; i < size; i++){
+            for(int i = 0; i < 5; i++){
                 gameObjectList[i].SetActive(false);
 
             }
@@ -100,13 +107,14 @@ public class startSimulation : MonoBehaviour, IPointerDownHandler{
             var hinge = Platform.GetComponent<HingeJoint2D>();
             hinge.limits = new JointAngleLimits2D() { max = 0, min = 0 };
             var size = gameObjectList.Length;
-            for (int i = 0; i < size; i++)
+            for (int i = 0; i < 5; i++)
             {
                 gameObjectList[i].SetActive(true);
             }
-            foreach (var obj in spawnedObjects) {
+            foreach (var obj in spawnedObjects)
+            {
                 Destroy(obj);
-            }      
+            }
             simulatorText.SetText("Iniciar Simulador");
             simulatorFlag = false;
         }
