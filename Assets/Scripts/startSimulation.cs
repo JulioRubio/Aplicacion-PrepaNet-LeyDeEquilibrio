@@ -15,7 +15,6 @@ public class startSimulation : MonoBehaviour, IPointerDownHandler{
     public GameObject[] gameObjectList;
     public List<GameObject> spawnedObjects;
     public TextMeshProUGUI simulatorText;
-    public startSimulation simulator;
     public GameObject spawn;
     private GameObject defaultObject;
     private List<GameObject> objectsCreated = new List<GameObject>();
@@ -35,9 +34,9 @@ public class startSimulation : MonoBehaviour, IPointerDownHandler{
         Levels levels;
 
         //path en windows
-        string pathLevels = Application.streamingAssetsPath + "/levels.json";
+        //string pathLevels = Application.streamingAssetsPath + "/levels.json";
         //path en android
-        //string pathLevels = Path.Combine(Application.persistentDataPath,"levels.json");
+        string pathLevels = Path.Combine(Application.persistentDataPath,"levels.json");
 
         string contents = File.ReadAllText(pathLevels);
         levels = JsonUtility.FromJson<Levels>( "{\"levels\":" + contents + "}");
@@ -46,9 +45,9 @@ public class startSimulation : MonoBehaviour, IPointerDownHandler{
 
 
         //path en windows
-        string pathLevelContents = Application.streamingAssetsPath + "/level_contents.json";
+        //string pathLevelContents = Application.streamingAssetsPath + "/level_contents.json";
         //path en android
-        //string pathLevelContents = Path.Combine(Application.persistentDataPath, "level_contents.json");
+        string pathLevelContents = Path.Combine(Application.persistentDataPath, "level_contents.json");
 
 
         contents = File.ReadAllText(pathLevelContents);
@@ -79,7 +78,7 @@ public class startSimulation : MonoBehaviour, IPointerDownHandler{
                             newSpawnObject = GameObject.Find(LC.content);
                             
                             newSpawnObject.GetComponent<types>().ChangeSprite();
-                            Vector2 newPos = new Vector2(gameObjectList[LC.position+4].transform.position.x, gameObjectList[LC.position + 4].transform.position.y - 0.7f);
+                            Vector2 newPos = new Vector2(gameObjectList[LC.position+4].transform.position.x, gameObjectList[LC.position + 4].transform.position.y - 0.6f);
                             var newObj = GameObject.Instantiate(spawn, newPos, Quaternion.Euler(0, 0, 0));
                             newObj.transform.parent = GameObject.Find("Platform").transform;
                             objectsCreated.Add(newObj);
