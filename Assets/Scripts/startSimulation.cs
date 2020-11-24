@@ -6,6 +6,7 @@ using TMPro;
 using System.IO;
 using System;
 using System.Linq;
+using UnityEngine.UI;
 
 public class startSimulation : MonoBehaviour, IPointerDownHandler{
     public bool simulatorFlag = false;
@@ -13,6 +14,9 @@ public class startSimulation : MonoBehaviour, IPointerDownHandler{
     public GameObject[] gameObjectList;
     public List<GameObject> spawnedObjects;
     public TextMeshProUGUI simulatorText;
+    public GameObject winText;
+    public Text textWin;
+    public string rightEq;
     public startSimulation simulator;
     public GameObject spawn;
 
@@ -29,6 +33,8 @@ public class startSimulation : MonoBehaviour, IPointerDownHandler{
     */
 
     void Start () {
+        rightEq = "";
+        simulatorText = FindObjectOfType<TextMeshProUGUI> ();
         Levels levels;
         //path en windows
         string pathLevels = Application.streamingAssetsPath + "/levels.json";
@@ -71,6 +77,12 @@ public class startSimulation : MonoBehaviour, IPointerDownHandler{
                             // Objetos que deben estar sobre la regla al principio
                             //LC.position
                             //LC.content
+                            Debug.Log("MASS");
+                            Debug.Log(GameObject.Find(LC.content).GetComponent<Rigidbody2D>().mass * 100);
+                            var mass = GameObject.Find(LC.content).GetComponent<Rigidbody2D>().mass * 100;
+                            rightEq += "(" + LC.position + ")" + "(" + mass + ")" + "+";
+                            var size = gameObjectList.Length;
+                            for (int j = 5; j < size; j++)
                             GameObject newSpawnObject;
                             if (LC.position == 1)
                             {
@@ -147,9 +159,11 @@ public class startSimulation : MonoBehaviour, IPointerDownHandler{
                 GameObject.Find(o).SetActive(false);
             }
         }
+        rightEq = rightEq.Remove(rightEq.Length - 1, 1); 
     }
 
     public void OnPointerDown(PointerEventData eventData){
+        string leftEq = "";
         if(!simulatorFlag){
             var hinge = Platform.GetComponent<HingeJoint2D>();
             hinge.limits = new JointAngleLimits2D() { max = 360, min = -360 };
@@ -158,8 +172,31 @@ public class startSimulation : MonoBehaviour, IPointerDownHandler{
                 gameObjectList[i].SetActive(false);
 
             }
+            var result = 0.0;
+            foreach (var obj in spawnedObjects)
+            {
+                var rb = obj.GetComponent<Rigidbody2D>();
+                var mass = rb.mass;
+                var pos = obj.transform.position.x;
+                if (pos < 0){
+                    leftEq += "(" + Math.Abs(pos) + ")" + "(" + mass + ")" + "+";
+                }
+                leftEq = leftEq.Remove(leftEq.Length - 1, 1); 
+                result += (pos * mass * 100);
+
+            }
+            if (result == 0){
+
+                Debug.Log("Ganaste");
+                textWin.text = "Ganaste\n" + leftEq + "=" + rightEq;
+            }
+            else{
+                Debug.Log("No seas menso");
+                textWin.text = "Intenta de nuevo";
+            }
             simulatorText.SetText("Detener Simulador");
             simulatorFlag = true;
+            winText.SetActive(true);
             
         }
         else{
@@ -179,6 +216,7 @@ public class startSimulation : MonoBehaviour, IPointerDownHandler{
             }
             simulatorText.SetText("Iniciar Simulador");
             simulatorFlag = false;
+            winText.SetActive(false);
         }
     }
 
