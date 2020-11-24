@@ -1100,6 +1100,7 @@ MonoBehaviour:
   spawn: {fileID: 1327861596}
   originalSprite: {fileID: 364860648}
   simulator: {fileID: 0}
+  reseter: {fileID: 0}
 --- !u!1 &370675479
 GameObject:
   m_ObjectHideFlags: 0
@@ -1796,6 +1797,7 @@ MonoBehaviour:
   spawn: {fileID: 1327861596}
   originalSprite: {fileID: 529088027}
   simulator: {fileID: 0}
+  reseter: {fileID: 0}
 --- !u!1 &535767030
 GameObject:
   m_ObjectHideFlags: 0
@@ -2501,6 +2503,7 @@ MonoBehaviour:
   spawn: {fileID: 1327861596}
   originalSprite: {fileID: 624021352}
   simulator: {fileID: 0}
+  reseter: {fileID: 0}
 --- !u!1 &627171795
 GameObject:
   m_ObjectHideFlags: 0
@@ -3771,6 +3774,7 @@ MonoBehaviour:
   spawn: {fileID: 1327861596}
   originalSprite: {fileID: 816675194}
   simulator: {fileID: 0}
+  reseter: {fileID: 0}
 --- !u!1 &818408686
 GameObject:
   m_ObjectHideFlags: 0
@@ -5436,6 +5440,7 @@ MonoBehaviour:
   spawn: {fileID: 1327861596}
   originalSprite: {fileID: 1182238680}
   simulator: {fileID: 0}
+  reseter: {fileID: 0}
 --- !u!1 &1203247910
 GameObject:
   m_ObjectHideFlags: 0
@@ -6053,6 +6058,7 @@ MonoBehaviour:
   spawn: {fileID: 1327861596}
   originalSprite: {fileID: 1302424675}
   simulator: {fileID: 0}
+  reseter: {fileID: 0}
 --- !u!1 &1327861596
 GameObject:
   m_ObjectHideFlags: 0
@@ -6381,24 +6387,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1370115167}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 41b0680d0246e464eb3d786dc651cd18, type: 3}
+  m_Script: {fileID: 11500000, guid: 3c93cb5ead7c9314a96e90a1556bcdbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  simulatorFlag: 0
-  Platform: {fileID: 1635938167}
-  gameObjectList:
-  - {fileID: 529088027}
-  - {fileID: 364860648}
-  - {fileID: 816675194}
-  - {fileID: 1384523129}
-  - {fileID: 1951438382}
-  - {fileID: 624021352}
-  - {fileID: 1182238680}
-  - {fileID: 1476361799}
-  - {fileID: 1811233960}
-  - {fileID: 1302424675}
-  spawnedObjects: []
-  simulatorText: {fileID: 2120741596}
 --- !u!61 &1370115170
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -6650,6 +6641,7 @@ MonoBehaviour:
   spawn: {fileID: 1327861596}
   originalSprite: {fileID: 1384523129}
   simulator: {fileID: 0}
+  reseter: {fileID: 0}
 --- !u!1 &1404080528
 GameObject:
   m_ObjectHideFlags: 0
@@ -7039,6 +7031,7 @@ MonoBehaviour:
   spawn: {fileID: 1327861596}
   originalSprite: {fileID: 1476361799}
   simulator: {fileID: 0}
+  reseter: {fileID: 0}
 --- !u!1 &1558147142
 GameObject:
   m_ObjectHideFlags: 0
@@ -8252,6 +8245,7 @@ MonoBehaviour:
   spawn: {fileID: 1327861596}
   originalSprite: {fileID: 1811233960}
   simulator: {fileID: 0}
+  reseter: {fileID: 0}
 --- !u!1 &1823626367
 GameObject:
   m_ObjectHideFlags: 0
@@ -9038,6 +9032,7 @@ MonoBehaviour:
   spawn: {fileID: 1327861596}
   originalSprite: {fileID: 1951438382}
   simulator: {fileID: 0}
+  reseter: {fileID: 0}
 --- !u!1 &1963013514
 GameObject:
   m_ObjectHideFlags: 0
