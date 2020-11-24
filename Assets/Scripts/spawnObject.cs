@@ -7,7 +7,6 @@ public class spawnObject : MonoBehaviour
     public Rigidbody2D rb;
     public Vector2 gravity;
     
-
     // Start is called before the first frame update
     void Start(){
         //se encarga de posicionar el objeto creado en el punto de x correspondiente a algun sprite spawner y una y de 0.7
