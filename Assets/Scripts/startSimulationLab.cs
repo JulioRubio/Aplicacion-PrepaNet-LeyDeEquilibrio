@@ -96,6 +96,12 @@ public class startSimulationLab : MonoBehaviour, IPointerDownHandler{
                 }
                 
             } 
+            FDerText.text = "Fuerza Total = ";
+            MDerText.text = "Peso Total = ";
+            DDerText.text = "Distancia Total = ";
+            FIzqText.text = "Fuerza Total = ";
+            MIzqText.text = "Peso Total = ";
+            DIzqText.text = "Distancia Total = ";
             //spawnedObjects.Clear();
             simulatorText.SetText("Iniciar Simulador");
             simulatorFlag = false;

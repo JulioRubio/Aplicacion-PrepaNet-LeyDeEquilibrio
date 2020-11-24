@@ -35,9 +35,9 @@ public class startSimulation : MonoBehaviour, IPointerDownHandler{
         Levels levels;
 
         //path en windows
-        string pathLevels = Application.streamingAssetsPath + "/levels.json";
+        //string pathLevels = Application.streamingAssetsPath + "/levels.json";
         //path en android
-        //string pathLevels = Path.Combine(Application.persistentDataPath,"levels.json");
+        string pathLevels = Path.Combine(Application.persistentDataPath,"levels.json");
 
         string contents = File.ReadAllText(pathLevels);
         levels = JsonUtility.FromJson<Levels>( "{\"levels\":" + contents + "}");
@@ -46,9 +46,9 @@ public class startSimulation : MonoBehaviour, IPointerDownHandler{
 
 
         //path en windows
-        string pathLevelContents = Application.streamingAssetsPath + "/level_contents.json";
+        //string pathLevelContents = Application.streamingAssetsPath + "/level_contents.json";
         //path en android
-        //string pathLevelContents = Path.Combine(Application.persistentDataPath, "level_contents.json");
+        string pathLevelContents = Path.Combine(Application.persistentDataPath, "level_contents.json");
 
 
         contents = File.ReadAllText(pathLevelContents);
@@ -188,6 +188,11 @@ public class startSimulation : MonoBehaviour, IPointerDownHandler{
                     }
                 }
             }
+            FIzqText.text = "Fuerza Total = ";
+            MIzqText.text = "Peso Total = ";
+            DIzqText.text = "Distancia Total = ";
+            FDerText.text = "Fuerza Total = ";
+            DDerText.text = "Distancia Total = ";
             var k = 0;
             foreach(var obj in objectsCreated)
             {
