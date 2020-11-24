@@ -7,6 +7,8 @@ using System.IO;
 using System;
 using System.Linq;
 
+
+
 public class startSimulation : MonoBehaviour, IPointerDownHandler{
     public bool simulatorFlag = false;
     public GameObject Platform;
@@ -15,8 +17,9 @@ public class startSimulation : MonoBehaviour, IPointerDownHandler{
     public TextMeshProUGUI simulatorText;
     public startSimulation simulator;
     public GameObject spawn;
-
-
+    private GameObject defaultObject;
+    private List<GameObject> objectsCreated = new List<GameObject>();
+    private List<Vector2> objectsPosicion = new List<Vector2>();
     /*
     click listener, cuando el boton el presionado mueve los limites de angulos del hinge joint son cambiados a -360 y 360 permitiendo rotacion de ambos lados
     inicialmente esta puesto como minimo de 0 y máximo de 0
@@ -30,9 +33,9 @@ public class startSimulation : MonoBehaviour, IPointerDownHandler{
 
     void Start () {
         Levels levels;
+
         //path en windows
         string pathLevels = Application.streamingAssetsPath + "/levels.json";
-
         //path en android
         //string pathLevels = Path.Combine(Application.persistentDataPath,"levels.json");
 
@@ -40,10 +43,14 @@ public class startSimulation : MonoBehaviour, IPointerDownHandler{
         levels = JsonUtility.FromJson<Levels>( "{\"levels\":" + contents + "}");
         
         LevelContents levelContents;
+
+
         //path en windows
         string pathLevelContents = Application.streamingAssetsPath + "/level_contents.json";
         //path en android
         //string pathLevelContents = Path.Combine(Application.persistentDataPath, "level_contents.json");
+
+
         contents = File.ReadAllText(pathLevelContents);
         levelContents = JsonUtility.FromJson<LevelContents>( "{\"level_contents\":" + contents + "}");
         string difficulty = PlayerPrefs.GetString("difficulty");
@@ -51,10 +58,7 @@ public class startSimulation : MonoBehaviour, IPointerDownHandler{
         string[] gameOs = new string[8];
         string[] objects = {"TX Village Props Barrel", "TX Village Props Barrel (1)", "TX Village Props Barrel (2)", "TX Village Props Barrel (3)",
                             "TX Village Props Barrel (4)", "TX Village Props Barrel (5)", "TX Village Props Barrel (6)"};
-        int i = 0;
-        Debug.Log(difficulty);
-        Debug.Log(levelNumber);
-        
+        int i = 0;  
         foreach (Level level in levels.levels)
         {
             if(level.difficulty.Equals(difficulty) && level.level == levelNumber)
@@ -72,57 +76,14 @@ public class startSimulation : MonoBehaviour, IPointerDownHandler{
                             //LC.position
                             //LC.content
                             GameObject newSpawnObject;
-                            if (LC.position == 1)
-                            {
-                                newSpawnObject = GameObject.Find(LC.content);
-                                newSpawnObject.GetComponent<types>().ChangeSprite();
-                                Vector2 newPos = new Vector2(1.0f, 1.5f );
-                                var newObj = GameObject.Instantiate(spawn, newPos, Quaternion.Euler(0, 0, 0));
-                                
-                            } else if (LC.position == 2)
-                            {
-                                newSpawnObject = GameObject.Find(LC.content);
-                                newSpawnObject.GetComponent<types>().ChangeSprite();
-                                Vector2 newPos = new Vector2(2.0f, 1.5f );
-                                var newObj = GameObject.Instantiate(spawn, newPos, Quaternion.Euler(0, 0, 0));
-                                
-
-                            }
-                            else if (LC.position == 3)
-                            {
-                                newSpawnObject = GameObject.Find(LC.content);
-                                newSpawnObject.GetComponent<types>().ChangeSprite();
-                                Vector2 newPos = new Vector2(3.0f, 1.5f );
-                                var newObj = GameObject.Instantiate(spawn, newPos, Quaternion.Euler(0, 0, 0));
-                                
-
-                            }
-                            else if (LC.position == 4)
-                            {
-                                newSpawnObject = GameObject.Find(LC.content);
-                                newSpawnObject.GetComponent<types>().ChangeSprite();
-                                Vector2 newPos = new Vector2(4.0f, 1.5f );
-                                var newObj = GameObject.Instantiate(spawn, newPos, Quaternion.Euler(0, 0, 0));
-                               
-
-                            }
-                            else if (LC.position == 5)
-                            {
-                                newSpawnObject = GameObject.Find(LC.content);
-                                newSpawnObject.GetComponent<types>().ChangeSprite();
-                                Vector2 newPos = new Vector2(5.0f, 1.5f );
-                                var newObj = GameObject.Instantiate(spawn, newPos, Quaternion.Euler(0, 0, 0));
-                                
-                            }
+                            newSpawnObject = GameObject.Find(LC.content);
                             
-
+                            newSpawnObject.GetComponent<types>().ChangeSprite();
+                            Vector2 newPos = new Vector2(gameObjectList[LC.position+4].transform.position.x, gameObjectList[LC.position + 4].transform.position.y - 0.7f);
+                            var newObj = GameObject.Instantiate(spawn, newPos, Quaternion.Euler(0, 0, 0));
+                            objectsCreated.Add(newObj);
+                            objectsPosicion.Add(newPos);
                         }
-                        Debug.Log(">>>>>>");
-                        Debug.Log(LC.canvas_flag);
-                        Debug.Log(LC.content);
-                        Debug.Log(LC.hidden_mass_flag);
-                        Debug.Log(LC.position);
-                        Debug.Log("<<<<<<");
                     }
                  }
                 var size = gameObjectList.Length;
@@ -140,20 +101,26 @@ public class startSimulation : MonoBehaviour, IPointerDownHandler{
         {
             if (gameOs.Contains(o))
             {
-
+                defaultObject = GameObject.Find(o);
             }
             else
             {
                 GameObject.Find(o).SetActive(false);
             }
         }
+        defaultObject.GetComponent<types>().ChangeSprite();
     }
 
     public void OnPointerDown(PointerEventData eventData){
         if(!simulatorFlag){
             var hinge = Platform.GetComponent<HingeJoint2D>();
             hinge.limits = new JointAngleLimits2D() { max = 360, min = -360 };
-
+            double f = 0.0f;
+            foreach(var obj in objectsCreated)
+            {
+                f += Math.Floor(obj.transform.position.x - 1);
+            }
+            print(f);
             for(int i = 0; i < 5; i++){
                 gameObjectList[i].SetActive(false);
 
@@ -163,6 +130,7 @@ public class startSimulation : MonoBehaviour, IPointerDownHandler{
             
         }
         else{
+            UnityEngine.SceneManagement.SceneManager.LoadScene("Ejercicios");
             var hinge = Platform.GetComponent<HingeJoint2D>();
             hinge.limits = new JointAngleLimits2D() { max = 0, min = 0 };
             var size = gameObjectList.Length;
@@ -176,6 +144,12 @@ public class startSimulation : MonoBehaviour, IPointerDownHandler{
                         gameObjectList[i].SetActive(false);
                     }
                 }
+            }
+            var k = 0;
+            foreach(var obj in objectsCreated)
+            {
+                obj.transform.position = objectsPosicion[k];
+                k++;
             }
             simulatorText.SetText("Iniciar Simulador");
             simulatorFlag = false;

@@ -30,11 +30,9 @@ public class startSimulationLab : MonoBehaviour, IPointerDownHandler{
             var size = gameObjectList.Length;
             for(int i = 0; i < size; i++){
                 gameObjectList[i].SetActive(false);
-
             }
             simulatorText.SetText("Detener Simulador");
             simulatorFlag = true;
-            
         }
         else{
             var hinge = Platform.GetComponent<HingeJoint2D>();
