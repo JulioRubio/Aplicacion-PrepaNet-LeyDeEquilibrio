@@ -81,8 +81,10 @@ public class startSimulation : MonoBehaviour, IPointerDownHandler{
                             newSpawnObject.GetComponent<types>().ChangeSprite();
                             Vector2 newPos = new Vector2(gameObjectList[LC.position+4].transform.position.x, gameObjectList[LC.position + 4].transform.position.y - 0.7f);
                             var newObj = GameObject.Instantiate(spawn, newPos, Quaternion.Euler(0, 0, 0));
+                            newObj.transform.parent = GameObject.Find("Platform").transform;
                             objectsCreated.Add(newObj);
                             objectsPosicion.Add(newPos);
+                            
                         }
                     }
                  }
@@ -113,14 +115,39 @@ public class startSimulation : MonoBehaviour, IPointerDownHandler{
 
     public void OnPointerDown(PointerEventData eventData){
         if(!simulatorFlag){
-            var hinge = Platform.GetComponent<HingeJoint2D>();
-            hinge.limits = new JointAngleLimits2D() { max = 360, min = -360 };
-            double f = 0.0f;
+            double staticObjectsAcumlativeDistance = 0.0;
+            double staticObjectsForce = 0.0f;
+            double dynamicObjectsAcumlativeDistance = 0.0;
+            double staticObjectsAcumlativeMass = 0.0;
+            double dynamicObjectsAcumlativeMass = 0.0;
+            double dynamicObjectsForce = 0.0f;
             foreach(var obj in objectsCreated)
             {
-                f += Math.Floor(obj.transform.position.x - 1);
+                double distance = Math.Round(obj.transform.localPosition.x);
+                double mass = Math.Round(obj.GetComponent<Rigidbody2D>().mass,2);
+
+                staticObjectsAcumlativeMass += mass;
+                staticObjectsAcumlativeDistance += distance;
+                staticObjectsForce += distance * mass;
             }
-            print(f);
+            //print("Total distance static " + staticObjectsAcumlativeDistance);
+            //print("Total mass static " + staticObjectsAcumlativeMass);
+            print("Total force static " + staticObjectsForce);
+            removeNull();
+            foreach (var obj in spawnedObjects) {
+                double distance = Math.Round(obj.transform.localPosition.x);
+                double mass = Math.Round(obj.GetComponent<Rigidbody2D>().mass,2);
+                dynamicObjectsAcumlativeMass += mass;
+                dynamicObjectsAcumlativeDistance += distance;
+                dynamicObjectsForce += (-1 * distance) * mass;
+            }
+            dynamicObjectsAcumlativeDistance *= -1;
+            //print("Total mass dynamic " + dynamicObjectsAcumlativeMass);
+            //print("Total distance dynamic " + dynamicObjectsAcumlativeDistance);
+            print("Total force dynamic " + dynamicObjectsForce);
+            var hinge = Platform.GetComponent<HingeJoint2D>();
+            hinge.limits = new JointAngleLimits2D() { max = 360, min = -360 };
+            //print(dynamicObjects);
             for(int i = 0; i < 5; i++){
                 gameObjectList[i].SetActive(false);
 
@@ -129,6 +156,7 @@ public class startSimulation : MonoBehaviour, IPointerDownHandler{
             simulatorFlag = true;
             
         }
+        
         else{
             UnityEngine.SceneManagement.SceneManager.LoadScene("Ejercicios");
             var hinge = Platform.GetComponent<HingeJoint2D>();
