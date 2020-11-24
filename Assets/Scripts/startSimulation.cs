@@ -109,7 +109,7 @@ public class startSimulation : MonoBehaviour, IPointerDownHandler{
                 gameObjectList[i].SetActive(false);
 
             }
-            var result = 0;
+            var result = 0.0;
             foreach (var obj in spawnedObjects)
             {
                 var rb = obj.GetComponent<Rigidbody2D>();
