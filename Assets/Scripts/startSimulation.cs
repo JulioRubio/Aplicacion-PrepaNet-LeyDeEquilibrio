@@ -6,6 +6,7 @@ using TMPro;
 using System.IO;
 using System;
 using System.Linq;
+using UnityEngine.UI;
 
 public class startSimulation : MonoBehaviour, IPointerDownHandler{
     public bool simulatorFlag = false;
@@ -13,6 +14,7 @@ public class startSimulation : MonoBehaviour, IPointerDownHandler{
     public GameObject[] gameObjectList;
     public List<GameObject> spawnedObjects;
     public TextMeshProUGUI simulatorText;
+    public Text winText;
 
     /*
     click listener, cuando el boton el presionado mueve los limites de angulos del hinge joint son cambiados a -360 y 360 permitiendo rotacion de ambos lados
@@ -102,20 +104,24 @@ public class startSimulation : MonoBehaviour, IPointerDownHandler{
             int result = 0;
             foreach (var obj in spawnedObjects)
             {
-                var rb = obj.GetComponent<RigidBody>();
+                var rb = obj.GetComponent<Rigidbody>();
                 var mass = rb.mass;
                 var pos = obj.transform.position.x;
-                result += pos * mass * 100;
+                result += (int) (pos * mass * 100);
 
             }
             if (result == 0){
+
                 Debug.Log("Ganaste");
+                winText.text = "Ganaste";
             }
             else{
                 Debug.Log("No seas menso");
+                winText.text = "Intenta de nuevo";
             }
             simulatorText.SetText("Detener Simulador");
             simulatorFlag = true;
+            winText.SetActive(true);
             
         }
         else{
@@ -132,6 +138,7 @@ public class startSimulation : MonoBehaviour, IPointerDownHandler{
             }
             simulatorText.SetText("Iniciar Simulador");
             simulatorFlag = false;
+            winText.SetActive(false);
         }
     }
 
