@@ -1,13 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using TMPro;
 using System.IO;
 using System;
 using System.Linq;
-
-
+using UnityEngine.SceneManagement;
 
 public class startSimulation : MonoBehaviour, IPointerDownHandler{
     public bool simulatorFlag = false;
@@ -20,6 +20,7 @@ public class startSimulation : MonoBehaviour, IPointerDownHandler{
     private GameObject defaultObject;
     private List<GameObject> objectsCreated = new List<GameObject>();
     private List<Vector2> objectsPosicion = new List<Vector2>();
+    public Text DDerText, FIzqText, MIzqText, DIzqText;
     /*
     click listener, cuando el boton el presionado mueve los limites de angulos del hinge joint son cambiados a -360 y 360 permitiendo rotacion de ambos lados
     inicialmente esta puesto como minimo de 0 y máximo de 0
@@ -154,6 +155,32 @@ public class startSimulation : MonoBehaviour, IPointerDownHandler{
             }
             simulatorText.SetText("Detener Simulador");
             simulatorFlag = true;
+
+            if(dynamicObjectsAcumlativeDistance != null)
+            {
+                FIzqText.text += dynamicObjectsForce;
+                MIzqText.text += dynamicObjectsAcumlativeMass;
+                DIzqText.text += dynamicObjectsAcumlativeDistance;
+
+                DDerText.text += staticObjectsAcumlativeDistance;
+            }
+
+            else
+            {
+                FIzqText.text += "0";
+                MIzqText.text += "0";
+                DIzqText.text += "0";
+
+                DDerText.text += staticObjectsAcumlativeDistance;
+            }
+           
+
+
+            //Pato: Si las fuerzas son iguales manda a la pantalla de Win
+            if(dynamicObjectsForce == staticObjectsForce)
+            {
+                SceneManager.LoadScene("Win");
+            }
             
         }
         
