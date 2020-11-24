@@ -65,8 +65,10 @@ public class startSimulation : MonoBehaviour, IPointerDownHandler{
                             // Objetos que deben estar sobre la regla al principio
                             //LC.position
                             //LC.content
-                            int mass = (int) GameObject.Find(LC.content).GetComponent<Rigidbody>().mass * 100;
-                            rightEq += "(" + LC.position + ")" + "(" + mass + ")" + "+"
+                            Debug.Log("MASS");
+                            Debug.Log(GameObject.Find(LC.content).GetComponent<Rigidbody2D>().mass * 100);
+                            var mass = GameObject.Find(LC.content).GetComponent<Rigidbody2D>().mass * 100;
+                            rightEq += "(" + LC.position + ")" + "(" + mass + ")" + "+";
                             var size = gameObjectList.Length;
                             for (int j = 5; j < size; j++)
                             {
@@ -98,6 +100,7 @@ public class startSimulation : MonoBehaviour, IPointerDownHandler{
     }
 
     public void OnPointerDown(PointerEventData eventData){
+        string leftEq = "";
         if(!simulatorFlag){
             var hinge = Platform.GetComponent<HingeJoint2D>();
             hinge.limits = new JointAngleLimits2D() { max = 360, min = -360 };
@@ -106,19 +109,23 @@ public class startSimulation : MonoBehaviour, IPointerDownHandler{
                 gameObjectList[i].SetActive(false);
 
             }
-            int result = 0;
+            var result = 0;
             foreach (var obj in spawnedObjects)
             {
-                var rb = obj.GetComponent<Rigidbody>();
+                var rb = obj.GetComponent<Rigidbody2D>();
                 var mass = rb.mass;
                 var pos = obj.transform.position.x;
-                result += (int) (pos * mass * 100);
+                if (pos < 0){
+                    leftEq += "(" + Math.Abs(pos) + ")" + "(" + mass + ")" + "+";
+                }
+                leftEq = leftEq.Remove(leftEq.Length - 1, 1); 
+                result += (pos * mass * 100);
 
             }
             if (result == 0){
 
                 Debug.Log("Ganaste");
-                textWin.text = "Ganaste";
+                textWin.text = "Ganaste\n" + leftEq + "=" + rightEq;
             }
             else{
                 Debug.Log("No seas menso");
