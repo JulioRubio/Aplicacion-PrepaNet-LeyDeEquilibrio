@@ -156,11 +156,11 @@ public class startSimulation : MonoBehaviour, IPointerDownHandler{
             simulatorFlag = true;
 
             
-            FIzqText.text += dynamicObjectsForce;
-            MIzqText.text += dynamicObjectsAcumlativeMass;
-            DIzqText.text += dynamicObjectsAcumlativeDistance;
+            FIzqText.text += dynamicObjectsForce + " N";
+            MIzqText.text += dynamicObjectsAcumlativeMass + " Kg";
+            DIzqText.text += dynamicObjectsAcumlativeDistance + " m";
 
-            DDerText.text += staticObjectsAcumlativeDistance;
+            DDerText.text += staticObjectsAcumlativeDistance + " m";
        
             //Pato: Si las fuerzas son iguales manda a la pantalla de Win
             if(dynamicObjectsForce == staticObjectsForce)
