@@ -214,5 +214,181 @@
         "id": 27,
         "level_id": 15,
         "position": null
+    },
+    {
+        "canvas_flag": 0,
+        "content": "TX Village Props Barrel (5)",
+        "hidden_mass_flag": 0,
+        "id": 28,
+        "level_id": 21,
+        "position": 1
+    },
+    {
+        "canvas_flag": 0,
+        "content": "TX Village Props Barrel (3)",
+        "hidden_mass_flag": 0,
+        "id": 28,
+        "level_id": 21,
+        "position": 3
+    },
+    {
+        "canvas_flag": 1,
+        "content": "TX Village Props Barrel (5)",
+        "hidden_mass_flag": 0,
+        "id": 29,
+        "level_id": 21,
+        "position": null
+    },
+    {
+        "canvas_flag": 1,
+        "content": "TX Village Props Barrel (3)",
+        "hidden_mass_flag": 0,
+        "id": 30,
+        "level_id": 21,
+        "position": null
+    },
+    {
+        "canvas_flag": 0,
+        "content": "TX Village Props Barrel (1)",
+        "hidden_mass_flag": 0,
+        "id": 31,
+        "level_id": 22,
+        "position": 1
+    },
+    {
+        "canvas_flag": 0,
+        "content": "TX Village Props Barrel (3)",
+        "hidden_mass_flag": 0,
+        "id": 31,
+        "level_id": 22,
+        "position": 3
+    },
+    {
+        "canvas_flag": 1,
+        "content": "TX Village Props Barrel (4)",
+        "hidden_mass_flag": 0,
+        "id": 32,
+        "level_id": 22,
+        "position": null
+    },
+    {
+        "canvas_flag": 0,
+        "content": "TX Village Props Barrel (4)",
+        "hidden_mass_flag": 0,
+        "id": 34,
+        "level_id": 23,
+        "position": 4
+    },
+    {
+        "canvas_flag": 0,
+        "content": "TX Village Props Barrel (1)",
+        "hidden_mass_flag": 0,
+        "id": 34,
+        "level_id": 23,
+        "position": 5
+    },
+    {
+        "canvas_flag": 1,
+        "content": "TX Village Props Barrel (5)",
+        "hidden_mass_flag": 0,
+        "id": 35,
+        "level_id": 23,
+        "position": null
+    },
+    {
+        "canvas_flag": 1,
+        "content": "TX Village Props Barrel",
+        "hidden_mass_flag": 0,
+        "id": 36,
+        "level_id": 23,
+        "position": null
+    },
+    {
+        "canvas_flag": 1,
+        "content": "TX Village Props Barrel (6)",
+        "hidden_mass_flag": 0,
+        "id": 35,
+        "level_id": 23,
+        "position": null
+    },
+    {
+        "canvas_flag": 0,
+        "content": "TX Village Props Barrel",
+        "hidden_mass_flag": 0,
+        "id": 37,
+        "level_id": 24,
+        "position": 3
+    },
+    {
+        "canvas_flag": 0,
+        "content": "TX Village Props Barrel (6)",
+        "hidden_mass_flag": 0,
+        "id": 37,
+        "level_id": 24,
+        "position": 2
+    },
+    {
+        "canvas_flag": 1,
+        "content": "TX Village Props Barrel (1)",
+        "hidden_mass_flag": 0,
+        "id": 38,
+        "level_id": 24,
+        "position": null
+    },
+    {
+        "canvas_flag": 1,
+        "content": "TX Village Props Barrel (6)",
+        "hidden_mass_flag": 0,
+        "id": 39,
+        "level_id": 24,
+        "position": null
+    },
+    {
+        "canvas_flag": 0,
+        "content": "TX Village Props Barrel",
+        "hidden_mass_flag": 0,
+        "id": 40,
+        "level_id": 25,
+        "position": 2
+    },
+    {
+        "canvas_flag": 0,
+        "content": "TX Village Props Barrel (5)",
+        "hidden_mass_flag": 0,
+        "id": 40,
+        "level_id": 25,
+        "position": 1
+    },
+    {
+        "canvas_flag": 0,
+        "content": "TX Village Props Barrel (4)",
+        "hidden_mass_flag": 0,
+        "id": 40,
+        "level_id": 25,
+        "position": 4
+    },
+    {
+        "canvas_flag": 1,
+        "content": "TX Village Props Barrel (2)",
+        "hidden_mass_flag": 0,
+        "id": 41,
+        "level_id": 25,
+        "position": null
+    },
+    {
+        "canvas_flag": 1,
+        "content": "TX Village Props Barrel (5)",
+        "hidden_mass_flag": 0,
+        "id": 42,
+        "level_id": 25,
+        "position": null
+    },
+    {
+        "canvas_flag": 1,
+        "content": "TX Village Props Barrel (6)",
+        "hidden_mass_flag": 0,
+        "id": 43,
+        "level_id": 25,
+        "position": null
     }
 ]
