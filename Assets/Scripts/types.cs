@@ -8,7 +8,7 @@ public class types : MonoBehaviour
     public SpriteRenderer spriteRenderer;
     public Sprite newSprite;
     public Rigidbody2D newMass;
-    void ChangeSprite()
+    public void ChangeSprite()
     {
     
         spriteRenderer.sprite = newSprite;
