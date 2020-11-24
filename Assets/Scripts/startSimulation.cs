@@ -156,26 +156,13 @@ public class startSimulation : MonoBehaviour, IPointerDownHandler{
             simulatorText.SetText("Detener Simulador");
             simulatorFlag = true;
 
-            if(dynamicObjectsAcumlativeDistance != null)
-            {
-                FIzqText.text += dynamicObjectsForce;
-                MIzqText.text += dynamicObjectsAcumlativeMass;
-                DIzqText.text += dynamicObjectsAcumlativeDistance;
+            
+            FIzqText.text += dynamicObjectsForce;
+            MIzqText.text += dynamicObjectsAcumlativeMass;
+            DIzqText.text += dynamicObjectsAcumlativeDistance;
 
-                DDerText.text += staticObjectsAcumlativeDistance;
-            }
-
-            else
-            {
-                FIzqText.text += "0";
-                MIzqText.text += "0";
-                DIzqText.text += "0";
-
-                DDerText.text += staticObjectsAcumlativeDistance;
-            }
-           
-
-
+            DDerText.text += staticObjectsAcumlativeDistance;
+       
             //Pato: Si las fuerzas son iguales manda a la pantalla de Win
             if(dynamicObjectsForce == staticObjectsForce)
             {
