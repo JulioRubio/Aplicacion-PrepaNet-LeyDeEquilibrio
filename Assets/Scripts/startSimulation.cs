@@ -13,6 +13,9 @@ public class startSimulation : MonoBehaviour, IPointerDownHandler{
     public GameObject[] gameObjectList;
     public List<GameObject> spawnedObjects;
     public TextMeshProUGUI simulatorText;
+    public startSimulation simulator;
+    public GameObject spawn;
+
 
     /*
     click listener, cuando el boton el presionado mueve los limites de angulos del hinge joint son cambiados a -360 y 360 permitiendo rotacion de ambos lados
@@ -24,7 +27,7 @@ public class startSimulation : MonoBehaviour, IPointerDownHandler{
         Cuando el simulador pasa de estado inactivo -> activo
             remover los spawner sprites no utilizados
     */
-    
+
     void Start () {
         Levels levels;
         //path en windows
@@ -35,7 +38,7 @@ public class startSimulation : MonoBehaviour, IPointerDownHandler{
 
         string contents = File.ReadAllText(pathLevels);
         levels = JsonUtility.FromJson<Levels>( "{\"levels\":" + contents + "}");
-
+        
         LevelContents levelContents;
         //path en windows
         string pathLevelContents = Application.streamingAssetsPath + "/level_contents.json";
@@ -51,6 +54,7 @@ public class startSimulation : MonoBehaviour, IPointerDownHandler{
         int i = 0;
         Debug.Log(difficulty);
         Debug.Log(levelNumber);
+        
         foreach (Level level in levels.levels)
         {
             if(level.difficulty.Equals(difficulty) && level.level == levelNumber)
@@ -67,28 +71,76 @@ public class startSimulation : MonoBehaviour, IPointerDownHandler{
                             // Objetos que deben estar sobre la regla al principio
                             //LC.position
                             //LC.content
-
-                            var size = gameObjectList.Length;
-                            for (int j = 5; j < size; j++)
+                            GameObject newSpawnObject;
+                            if (LC.position == 1)
                             {
-                                gameObjectList[j].SetActive(false);
+                                newSpawnObject = GameObject.Find(LC.content);
+                                newSpawnObject.GetComponent<types>().ChangeSprite();
+                                Vector2 newPos = new Vector2(1.0f, 1.5f );
+                                var newObj = GameObject.Instantiate(spawn, newPos, Quaternion.Euler(0, 0, 0));
+                                
+                            } else if (LC.position == 2)
+                            {
+                                newSpawnObject = GameObject.Find(LC.content);
+                                newSpawnObject.GetComponent<types>().ChangeSprite();
+                                Vector2 newPos = new Vector2(2.0f, 1.5f );
+                                var newObj = GameObject.Instantiate(spawn, newPos, Quaternion.Euler(0, 0, 0));
+                                
 
                             }
+                            else if (LC.position == 3)
+                            {
+                                newSpawnObject = GameObject.Find(LC.content);
+                                newSpawnObject.GetComponent<types>().ChangeSprite();
+                                Vector2 newPos = new Vector2(3.0f, 1.5f );
+                                var newObj = GameObject.Instantiate(spawn, newPos, Quaternion.Euler(0, 0, 0));
+                                
+
+                            }
+                            else if (LC.position == 4)
+                            {
+                                newSpawnObject = GameObject.Find(LC.content);
+                                newSpawnObject.GetComponent<types>().ChangeSprite();
+                                Vector2 newPos = new Vector2(4.0f, 1.5f );
+                                var newObj = GameObject.Instantiate(spawn, newPos, Quaternion.Euler(0, 0, 0));
+                               
+
+                            }
+                            else if (LC.position == 5)
+                            {
+                                newSpawnObject = GameObject.Find(LC.content);
+                                newSpawnObject.GetComponent<types>().ChangeSprite();
+                                Vector2 newPos = new Vector2(5.0f, 1.5f );
+                                var newObj = GameObject.Instantiate(spawn, newPos, Quaternion.Euler(0, 0, 0));
+                                
+                            }
+                            
+
                         }
+                        Debug.Log(">>>>>>");
                         Debug.Log(LC.canvas_flag);
                         Debug.Log(LC.content);
                         Debug.Log(LC.hidden_mass_flag);
                         Debug.Log(LC.position);
-                     }
-                 }    
+                        Debug.Log("<<<<<<");
+                    }
+                 }
+                var size = gameObjectList.Length;
+                for (int j = 5; j < size; j++)
+                {
+                    gameObjectList[j].SetActive(false);
+
+                }
             }
+            
+                            
         }
+
         foreach (string o in objects)
         {
             if (gameOs.Contains(o))
             {
-                Debug.Log("Hello");
-                Debug.Log(o);
+
             }
             else
             {
@@ -101,7 +153,7 @@ public class startSimulation : MonoBehaviour, IPointerDownHandler{
         if(!simulatorFlag){
             var hinge = Platform.GetComponent<HingeJoint2D>();
             hinge.limits = new JointAngleLimits2D() { max = 360, min = -360 };
-            var size = gameObjectList.Length;
+
             for(int i = 0; i < 5; i++){
                 gameObjectList[i].SetActive(false);
 
