@@ -116,11 +116,11 @@ public class startSimulation : MonoBehaviour, IPointerDownHandler{
     public void OnPointerDown(PointerEventData eventData){
         if(!simulatorFlag){
             double staticObjectsAcumlativeDistance = 0.0;
-            double staticObjectsForce = 0.0f;
+            double staticObjectsForce = 0.0;
             double dynamicObjectsAcumlativeDistance = 0.0;
             double staticObjectsAcumlativeMass = 0.0;
             double dynamicObjectsAcumlativeMass = 0.0;
-            double dynamicObjectsForce = 0.0f;
+            double dynamicObjectsForce = 0.0;
             foreach(var obj in objectsCreated)
             {
                 double distance = Math.Round(obj.transform.localPosition.x);
@@ -132,7 +132,7 @@ public class startSimulation : MonoBehaviour, IPointerDownHandler{
             }
             //print("Total distance static " + staticObjectsAcumlativeDistance);
             //print("Total mass static " + staticObjectsAcumlativeMass);
-            print("Total force static " + staticObjectsForce);
+            //print("Total force static " + staticObjectsForce);
             removeNull();
             foreach (var obj in spawnedObjects) {
                 double distance = Math.Round(obj.transform.localPosition.x);
@@ -144,7 +144,7 @@ public class startSimulation : MonoBehaviour, IPointerDownHandler{
             dynamicObjectsAcumlativeDistance *= -1;
             //print("Total mass dynamic " + dynamicObjectsAcumlativeMass);
             //print("Total distance dynamic " + dynamicObjectsAcumlativeDistance);
-            print("Total force dynamic " + dynamicObjectsForce);
+            //print("Total force dynamic " + dynamicObjectsForce);
             var hinge = Platform.GetComponent<HingeJoint2D>();
             hinge.limits = new JointAngleLimits2D() { max = 360, min = -360 };
             //print(dynamicObjects);
@@ -155,18 +155,19 @@ public class startSimulation : MonoBehaviour, IPointerDownHandler{
             simulatorText.SetText("Detener Simulador");
             simulatorFlag = true;
             //Pato: Si las fuerzas son iguales manda a la pantalla de Win
-            if(dynamicObjectsForce == staticObjectsForce)
-            {
+            print("Total force static " + staticObjectsForce);
+            if(dynamicObjectsForce > staticObjectsForce - 0.001 && dynamicObjectsForce < staticObjectsForce + 0.001){
+                print("WINNER");
                 SceneManager.LoadScene("Win");
             }
             dynamicObjectsForce *= 100 * 9.8;
             dynamicObjectsAcumlativeMass *= 100 * 9.8;
-            staticObjectsAcumlativeMass *= 100 * 9.8;
+            staticObjectsForce *= 100 * 9.8;
 
             FIzqText.text += dynamicObjectsForce + " N m";
             MIzqText.text += dynamicObjectsAcumlativeMass + " N";
             DIzqText.text += dynamicObjectsAcumlativeDistance + " m";
-            FDerText.text += staticObjectsAcumlativeMass + " N m";
+            FDerText.text += staticObjectsForce + " N m";
             DDerText.text += staticObjectsAcumlativeDistance + " m";
        
         }
