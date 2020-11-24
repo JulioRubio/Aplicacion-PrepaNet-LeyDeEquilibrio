@@ -1,18 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
-public class ObjectSpawnController : MonoBehaviour
+public class ObjectSpawnControllerLab : MonoBehaviour
 {
-
     public GameObject spawn;
     public GameObject originalSprite;
-    public startSimulation simulator;
+    public startSimulationLab simulator;
+    public resetSimulatorLab reseter;
 
     void Start(){
-        simulator = GameObject.FindObjectOfType<startSimulation>();
-
+        simulator = GameObject.FindObjectOfType<startSimulationLab>();
+        reseter = GameObject.FindObjectOfType<resetSimulatorLab>();
     }
 
     //detecta touch, si la posicion del touch coincide con algun polygon collider quitar collider y sustituir por objeto
@@ -26,13 +25,12 @@ public class ObjectSpawnController : MonoBehaviour
                 Vector2 newPos = new Vector2(originalSprite.transform.position.x,originalSprite.transform.position.y-0.7f);
                 var newObj = GameObject.Instantiate(spawn, newPos, Quaternion.Euler(0, 0, rotationVector.z)) ;
                 newObj.AddComponent<spawnObject>();
-                newObj.GetComponent<setNewAngle>().objectController = this.gameObject;
+                newObj.GetComponent<setNewAngleLab>().objectController = this.gameObject;
                 newObj.transform.parent = GameObject.Find("Platform").transform;
                 simulator.objectCreated(newObj);
-           
+                reseter.objectCreated(newObj);
             }
         }
 
     }
-
 }

@@ -8,7 +8,7 @@ public class types : MonoBehaviour
     public SpriteRenderer spriteRenderer;
     public Sprite newSprite;
     public Rigidbody2D newMass;
-    void ChangeSprite()
+    public void ChangeSprite()
     {
     
         spriteRenderer.sprite = newSprite;
@@ -18,9 +18,7 @@ public class types : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        
+    void Update(){
         if (Input.touchCount > 0 )
         {
 

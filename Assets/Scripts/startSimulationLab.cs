@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using TMPro;
+using System;
+
 
 public class startSimulationLab : MonoBehaviour, IPointerDownHandler{
     public bool simulatorFlag = false;
@@ -21,11 +23,6 @@ public class startSimulationLab : MonoBehaviour, IPointerDownHandler{
         Cuando el simulador pasa de estado inactivo -> activo
             remover los spawner sprites no utilizados
     */
-    
-    void Start () {
-        simulatorText = FindObjectOfType<TextMeshProUGUI> ();
-    }
-
     public void OnPointerDown(PointerEventData eventData){
         if(!simulatorFlag){
             var hinge = Platform.GetComponent<HingeJoint2D>();
@@ -43,13 +40,20 @@ public class startSimulationLab : MonoBehaviour, IPointerDownHandler{
             var hinge = Platform.GetComponent<HingeJoint2D>();
             hinge.limits = new JointAngleLimits2D() { max = 0, min = 0 };
             var size = gameObjectList.Length;
+            removeNull();
             for (int i = 0; i < size; i++)
             {
                 gameObjectList[i].SetActive(true);
-            }
-            foreach (var obj in spawnedObjects) {
-                Destroy(obj);
-            }      
+                foreach (var obj in spawnedObjects) {
+                    if(Math.Round(gameObjectList[i].transform.localPosition.x) == Math.Round(obj.transform.localPosition.x)){
+                        print("yes");
+                        //Destroy(obj);
+                        gameObjectList[i].SetActive(false);
+                    }
+                }
+                
+            } 
+            //spawnedObjects.Clear();
             simulatorText.SetText("Iniciar Simulador");
             simulatorFlag = false;
         }
@@ -59,6 +63,15 @@ public class startSimulationLab : MonoBehaviour, IPointerDownHandler{
         spawnedObjects.Add(spawned);
     }
 
+    public void removeNull(){
+        spawnedObjects.RemoveAll(item => item == null);
+    }
 
+    public void changeFlag(){
+        if(simulatorFlag){
+            simulatorText.SetText("Iniciar Simulador");
+        }
+        simulatorFlag = false;
+    }
 }
 
