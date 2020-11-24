@@ -99,6 +99,21 @@ public class startSimulation : MonoBehaviour, IPointerDownHandler{
                 gameObjectList[i].SetActive(false);
 
             }
+            int result = 0;
+            foreach (var obj in spawnedObjects)
+            {
+                var rb = obj.GetComponent<RigidBody>();
+                var mass = rb.mass;
+                var pos = obj.transform.position.x;
+                result += pos * mass * 100;
+
+            }
+            if (result == 0){
+                Debug.Log("Ganaste");
+            }
+            else{
+                Debug.Log("No seas menso");
+            }
             simulatorText.SetText("Detener Simulador");
             simulatorFlag = true;
             
