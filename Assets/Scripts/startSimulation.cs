@@ -173,34 +173,7 @@ public class startSimulation : MonoBehaviour, IPointerDownHandler{
         }
         
         else{
-            UnityEngine.SceneManagement.SceneManager.LoadScene("Ejercicios");
-            var hinge = Platform.GetComponent<HingeJoint2D>();
-            hinge.limits = new JointAngleLimits2D() { max = 0, min = 0 };
-            var size = gameObjectList.Length;
-            removeNull();
-            for (int i = 0; i < 5; i++){
-                gameObjectList[i].SetActive(true);
-                foreach (var obj in spawnedObjects) {
-                    if(Math.Round(gameObjectList[i].transform.localPosition.x) == Math.Round(obj.transform.localPosition.x)){
-                        print("yes");
-                        //Destroy(obj);
-                        gameObjectList[i].SetActive(false);
-                    }
-                }
-            }
-            FIzqText.text = "Fuerza Total = ";
-            MIzqText.text = "Peso Total = ";
-            DIzqText.text = "Distancia Total = ";
-            FDerText.text = "Fuerza Total = ";
-            DDerText.text = "Distancia Total = ";
-            var k = 0;
-            foreach(var obj in objectsCreated)
-            {
-                obj.transform.position = objectsPosicion[k];
-                k++;
-            }
-            simulatorText.SetText("Iniciar Simulador");
-            simulatorFlag = false;
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
     }
 

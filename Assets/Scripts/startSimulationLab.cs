@@ -96,10 +96,10 @@ public class startSimulationLab : MonoBehaviour, IPointerDownHandler{
                 }
                 
             } 
-            FDerText.text = "Fuerza Total = ";
+            FDerText.text = "Fuerza Torque = ";
             MDerText.text = "Peso Total = ";
             DDerText.text = "Distancia Total = ";
-            FIzqText.text = "Fuerza Total = ";
+            FIzqText.text = "Fuerza Torque =  ";
             MIzqText.text = "Peso Total = ";
             DIzqText.text = "Distancia Total = ";
             //spawnedObjects.Clear();
