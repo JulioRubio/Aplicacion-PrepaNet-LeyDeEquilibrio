@@ -1368,7 +1368,8 @@ MonoBehaviour:
   - {fileID: 1302424675}
   spawnedObjects: []
   simulatorText: {fileID: 0}
-  winText: {fileID: 0}
+  winText: {fileID: 2136004967}
+  textWin: {fileID: 2136004969}
 --- !u!61 &419431967
 BoxCollider2D:
   m_ObjectHideFlags: 0

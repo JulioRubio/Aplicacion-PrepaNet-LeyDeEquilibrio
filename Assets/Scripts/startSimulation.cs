@@ -14,7 +14,9 @@ public class startSimulation : MonoBehaviour, IPointerDownHandler{
     public GameObject[] gameObjectList;
     public List<GameObject> spawnedObjects;
     public TextMeshProUGUI simulatorText;
-    public Text winText;
+    public GameObject winText;
+    public Text textWin;
+    public string rightEq;
 
     /*
     click listener, cuando el boton el presionado mueve los limites de angulos del hinge joint son cambiados a -360 y 360 permitiendo rotacion de ambos lados
@@ -28,6 +30,7 @@ public class startSimulation : MonoBehaviour, IPointerDownHandler{
     */
     
     void Start () {
+        rightEq = "";
         simulatorText = FindObjectOfType<TextMeshProUGUI> ();
         Levels levels;
         string pathLevels = Application.streamingAssetsPath + "/levels.json";
@@ -62,7 +65,8 @@ public class startSimulation : MonoBehaviour, IPointerDownHandler{
                             // Objetos que deben estar sobre la regla al principio
                             //LC.position
                             //LC.content
-
+                            int mass = (int) GameObject.Find(LC.content).GetComponent<Rigidbody>().mass * 100;
+                            rightEq += "(" + LC.position + ")" + "(" + mass + ")" + "+"
                             var size = gameObjectList.Length;
                             for (int j = 5; j < size; j++)
                             {
@@ -90,6 +94,7 @@ public class startSimulation : MonoBehaviour, IPointerDownHandler{
                 GameObject.Find(o).SetActive(false);
             }
         }
+        rightEq = rightEq.Remove(rightEq.Length - 1, 1); 
     }
 
     public void OnPointerDown(PointerEventData eventData){
@@ -113,11 +118,11 @@ public class startSimulation : MonoBehaviour, IPointerDownHandler{
             if (result == 0){
 
                 Debug.Log("Ganaste");
-                winText.text = "Ganaste";
+                textWin.text = "Ganaste";
             }
             else{
                 Debug.Log("No seas menso");
-                winText.text = "Intenta de nuevo";
+                textWin.text = "Intenta de nuevo";
             }
             simulatorText.SetText("Detener Simulador");
             simulatorFlag = true;
