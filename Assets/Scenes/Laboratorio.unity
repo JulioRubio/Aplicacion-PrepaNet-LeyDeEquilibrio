@@ -6984,6 +6984,12 @@ MonoBehaviour:
   - {fileID: 1302424675}
   spawnedObjects: []
   simulator: {fileID: 0}
+  FDerText: {fileID: 1113296652}
+  MDerText: {fileID: 1067384703}
+  DDerText: {fileID: 969844414}
+  FIzqText: {fileID: 1104709239}
+  MIzqText: {fileID: 1351828526}
+  DIzqText: {fileID: 827378330}
 --- !u!1 &1384523129
 GameObject:
   m_ObjectHideFlags: 0
