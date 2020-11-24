@@ -19,7 +19,7 @@ public class startSimulation : MonoBehaviour, IPointerDownHandler{
     private GameObject defaultObject;
     private List<GameObject> objectsCreated = new List<GameObject>();
     private List<Vector2> objectsPosicion = new List<Vector2>();
-    public Text DDerText, FIzqText, MIzqText, DIzqText;
+    public Text FDerText, DDerText, FIzqText, MIzqText, DIzqText;
     /*
     click listener, cuando el boton el presionado mueve los limites de angulos del hinge joint son cambiados a -360 y 360 permitiendo rotacion de ambos lados
     inicialmente esta puesto como minimo de 0 y máximo de 0
@@ -35,9 +35,9 @@ public class startSimulation : MonoBehaviour, IPointerDownHandler{
         Levels levels;
 
         //path en windows
-        //string pathLevels = Application.streamingAssetsPath + "/levels.json";
+        string pathLevels = Application.streamingAssetsPath + "/levels.json";
         //path en android
-        string pathLevels = Path.Combine(Application.persistentDataPath,"levels.json");
+        //string pathLevels = Path.Combine(Application.persistentDataPath,"levels.json");
 
         string contents = File.ReadAllText(pathLevels);
         levels = JsonUtility.FromJson<Levels>( "{\"levels\":" + contents + "}");
@@ -46,9 +46,9 @@ public class startSimulation : MonoBehaviour, IPointerDownHandler{
 
 
         //path en windows
-        //string pathLevelContents = Application.streamingAssetsPath + "/level_contents.json";
+        string pathLevelContents = Application.streamingAssetsPath + "/level_contents.json";
         //path en android
-        string pathLevelContents = Path.Combine(Application.persistentDataPath, "level_contents.json");
+        //string pathLevelContents = Path.Combine(Application.persistentDataPath, "level_contents.json");
 
 
         contents = File.ReadAllText(pathLevelContents);
@@ -154,20 +154,21 @@ public class startSimulation : MonoBehaviour, IPointerDownHandler{
             }
             simulatorText.SetText("Detener Simulador");
             simulatorFlag = true;
-
-            
-            FIzqText.text += dynamicObjectsForce;
-            MIzqText.text += dynamicObjectsAcumlativeMass;
-            DIzqText.text += dynamicObjectsAcumlativeDistance;
-
-            DDerText.text += staticObjectsAcumlativeDistance;
-       
             //Pato: Si las fuerzas son iguales manda a la pantalla de Win
             if(dynamicObjectsForce == staticObjectsForce)
             {
                 SceneManager.LoadScene("Win");
             }
-            
+            dynamicObjectsForce *= 100 * 9.8;
+            dynamicObjectsAcumlativeMass *= 100 * 9.8;
+            staticObjectsAcumlativeMass *= 100 * 9.8;
+
+            FIzqText.text += dynamicObjectsForce + " N m";
+            MIzqText.text += dynamicObjectsAcumlativeMass + " N";
+            DIzqText.text += dynamicObjectsAcumlativeDistance + " m";
+            FDerText.text += staticObjectsAcumlativeMass + " N m";
+            DDerText.text += staticObjectsAcumlativeDistance + " m";
+       
         }
         
         else{
