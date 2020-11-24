@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using System;
 
@@ -11,6 +12,7 @@ public class resetSimulatorLab : MonoBehaviour, IPointerDownHandler
     public GameObject[] gameObjectList;
     public List<GameObject> spawnedObjects;
     public startSimulationLab simulator;
+    public Text FDerText, MDerText, DDerText, FIzqText, MIzqText, DIzqText;
 
      void Start(){
         simulator = GameObject.FindObjectOfType<startSimulationLab>();
@@ -38,6 +40,12 @@ public class resetSimulatorLab : MonoBehaviour, IPointerDownHandler
             Destroy(obj);   
         }   
         spawnedObjects.Clear();
+        FDerText.text = "Fuerza Total = ";
+        MDerText.text = "Peso Total = ";
+        DDerText.text = "Distancia Total = ";
+        FIzqText.text = "Fuerza Total = ";
+        MIzqText.text = "Peso Total = ";
+        DIzqText.text = "Distancia Total = ";
     }
     public void objectCreated(GameObject spawned){
         spawnedObjects.Add(spawned);

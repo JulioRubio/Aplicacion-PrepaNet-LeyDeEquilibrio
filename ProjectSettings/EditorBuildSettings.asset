@@ -26,4 +26,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Ejercicios.unity
     guid: 466d54ff28dca0140a2b1e6030a519b8
+  - enabled: 1
+    path: Assets/Scenes/Win.unity
+    guid: 0ff7cf73f78323d4ba1ef997604b159f
   m_configObjects: {}

@@ -1505,8 +1505,8 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -330.7, y: 5.3}
-  m_SizeDelta: {x: 120.60321, y: 19.349804}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_SizeDelta: {x: 140, y: 19.349804}
+  m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &392532339
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1617,6 +1617,11 @@ MonoBehaviour:
   spawnedObjects: []
   simulatorText: {fileID: 1584574011}
   spawn: {fileID: 1327861596}
+  FDerText: {fileID: 1860487631}
+  DDerText: {fileID: 1223325834}
+  FIzqText: {fileID: 392532339}
+  MIzqText: {fileID: 1193249314}
+  DIzqText: {fileID: 1960421384}
 --- !u!61 &419431967
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5748,8 +5753,8 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -330.7, y: -14.05}
-  m_SizeDelta: {x: 120.60321, y: 19.349804}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_SizeDelta: {x: 140, y: 19.349804}
+  m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &1193249314
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5782,7 +5787,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Masa Total = '
+  m_Text: 'Peso Total = '
 --- !u!222 &1193249315
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6132,7 +6137,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 300, y: -38.7}
-  m_SizeDelta: {x: 120.60321, y: 19.349804}
+  m_SizeDelta: {x: 140, y: 19.349804}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1223325834
 MonoBehaviour:
@@ -8938,7 +8943,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 300, y: -0.0000014305}
-  m_SizeDelta: {x: 120.60321, y: 19.349804}
+  m_SizeDelta: {x: 140, y: 19.349804}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1860487631
 MonoBehaviour:
@@ -8972,7 +8977,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Fuerza Total = ?
+  m_Text: 'Fuerza Total = '
 --- !u!222 &1860487632
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -9469,8 +9474,8 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -330.7, y: -33.4}
-  m_SizeDelta: {x: 120.60321, y: 19.349804}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_SizeDelta: {x: 140, y: 19.349804}
+  m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &1960421384
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9871,7 +9876,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 300, y: -19.35}
-  m_SizeDelta: {x: 120.60321, y: 19.349804}
+  m_SizeDelta: {x: 140, y: 19.349804}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2031725610
 MonoBehaviour:
@@ -9905,7 +9910,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Masa Total = ?
+  m_Text: Peso Total = ?
 --- !u!222 &2031725611
 CanvasRenderer:
   m_ObjectHideFlags: 0
