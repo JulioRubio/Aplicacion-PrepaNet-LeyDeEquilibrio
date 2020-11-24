@@ -4036,7 +4036,7 @@ MonoBehaviour:
     m_Alignment: 0
     m_AlignByGeometry: 0
     m_RichText: 1
-    m_HorizontalOverflow: 0
+    m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: 'Distancia Total = '
@@ -4844,7 +4844,7 @@ MonoBehaviour:
     m_Alignment: 0
     m_AlignByGeometry: 0
     m_RichText: 1
-    m_HorizontalOverflow: 0
+    m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: 'Distancia Total = '
@@ -5229,7 +5229,7 @@ MonoBehaviour:
     m_Alignment: 0
     m_AlignByGeometry: 0
     m_RichText: 1
-    m_HorizontalOverflow: 0
+    m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: 'Peso Total = '
@@ -5415,7 +5415,7 @@ MonoBehaviour:
     m_Alignment: 0
     m_AlignByGeometry: 0
     m_RichText: 1
-    m_HorizontalOverflow: 0
+    m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: 'Fuerza Total = '
@@ -5571,7 +5571,7 @@ MonoBehaviour:
     m_Alignment: 0
     m_AlignByGeometry: 0
     m_RichText: 1
-    m_HorizontalOverflow: 0
+    m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: 'Fuerza Total = '
@@ -6691,7 +6691,7 @@ MonoBehaviour:
     m_Alignment: 0
     m_AlignByGeometry: 0
     m_RichText: 1
-    m_HorizontalOverflow: 0
+    m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: 'Peso Total = '
@@ -6984,6 +6984,12 @@ MonoBehaviour:
   - {fileID: 1302424675}
   spawnedObjects: []
   simulator: {fileID: 0}
+  FDerText: {fileID: 0}
+  MDerText: {fileID: 0}
+  DDerText: {fileID: 0}
+  FIzqText: {fileID: 0}
+  MIzqText: {fileID: 0}
+  DIzqText: {fileID: 0}
 --- !u!1 &1384523129
 GameObject:
   m_ObjectHideFlags: 0
